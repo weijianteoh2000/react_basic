@@ -4,8 +4,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo 'Building..'
                 sh 'npm install'
                 sh 'npm run build'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
             }
         }
         stage('Deliver') {
@@ -15,6 +21,11 @@ pipeline {
                 sh './scripts/deliver.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './scripts/kill.sh'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
