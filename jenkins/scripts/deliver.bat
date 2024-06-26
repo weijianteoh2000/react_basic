@@ -5,7 +5,7 @@ npm run build
 
 REM Start the application in the background
 start npm start
-timeout /t 1 /nobreak
+timeout /t 5 /nobreak
 
 REM Retrieve the PID of the first node.exe process
 for /f "tokens=2 delims=," %%I in ('tasklist /fi "imagename eq node.exe" /fo csv /nh') do (
