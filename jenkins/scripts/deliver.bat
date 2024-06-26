@@ -4,7 +4,7 @@ REM Run the build command
 npm run build
 
 REM Start the application in the background
-start npm start
+npm start
 timeout /t 5 /nobreak
 
 REM Retrieve the PID of the first node.exe process
