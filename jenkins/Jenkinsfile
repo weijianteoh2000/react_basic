@@ -16,11 +16,13 @@ pipeline {
         }
         stage('Deliver') {
             steps {
+                // Print the current directory to verify the location
+                bat 'cd'
                 // bat 'chmod -R +rwx ./scripts/deliver.bat'
                 // bat 'chmod -R +rwx ./scripts/kill.bat'
-                bat 'scripts\\deliver.bat'
+                bat 'jenkins\\scripts\\deliver.bat'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                bat 'scripts\\kill.bat'
+                bat 'jenkins\\scripts\\kill.bat'
             }
         }
         stage('Deploy') {
