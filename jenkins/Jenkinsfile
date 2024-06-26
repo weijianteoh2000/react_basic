@@ -8,11 +8,6 @@ pipeline {
                 bat 'npm install'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
         stage('Deliver') {
             steps {
                 // Print the current directory to verify the location
@@ -20,13 +15,10 @@ pipeline {
                 // bat 'chmod -R +rwx ./scripts/deliver.bat'
                 // bat 'chmod -R +rwx ./scripts/kill.bat'
                 bat 'jenkins\\scripts\\deliver.bat'
+                echo 'Now...'
+                echo 'Visit http://localhost:3000 to see your Node.js/React application in action.'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 bat 'jenkins\\scripts\\kill.bat'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
             }
         }
     }
