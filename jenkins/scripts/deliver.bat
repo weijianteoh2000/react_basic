@@ -1,10 +1,14 @@
 @echo off
 
+REM Run the build command
 npm run build
 
+REM Start the application in the background
 start npm start
 timeout /t 1 /nobreak
-for /f "tokens=2 delims==; " %%I in ('tasklist /fi "imagename eq node.exe" /fo csv /nh') do (
+
+REM Retrieve the PID of the first node.exe process
+for /f "tokens=2 delims=," %%I in ('tasklist /fi "imagename eq node.exe" /fo csv /nh') do (
   echo %%I > .pidfile
   goto break
 )
